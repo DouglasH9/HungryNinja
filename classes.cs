@@ -42,23 +42,38 @@ namespace HungryNinja
             public Food Serve()
             {
                 Random rand = new Random();
-                object randFood = Menu[rand.Next(1,8)];
-                return randFood;
-
+                return Menu[rand.Next(Menu.Count)];
             }
         }
     class Ninja
         {
-            private int calorieIntake;
-            public List<Food> FoodHistory;
+            private int calorieEaten;
+            public List<Food> History;
             
             public Ninja()
-            
-            public void Eat(Food item)
             {
+                caloriesEaten = 0;
+                History = new List<Food>();
+            }
+
+            public bool IsFull
+            {
+                get {return caloriesEaten > 1200;}
+            }
+
+            public bool Eat(Food meal)
+            {
+                if (!IsFull)
+                {
+                    CaloriesEaten += meal.Calories;
+                    History.Add(meal);
+                    Console.WriteLine($"Eating some {meal}...");
+                }
+                else 
+                {
+                    Console.WriteLine("Ninja is stuffed! Can't eat anymore!");
+                }
+                return IsFull;
             }
         }
-
-cop
-
 }

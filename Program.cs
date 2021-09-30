@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace HungryNinja
 {
@@ -6,7 +7,12 @@ namespace HungryNinja
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Ninja kirby =  new Ninja();
+            Buffet newBuffet = new Buffet();
+            while(!kirby.IsFull)
+            {
+                kirby.Eat(Buffet.Serve());
+            }
         }
     }
 }
